@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cube</title>
+	<style>
+		html,body{
+			padding:0;
+			margin:0;
+			height:100%;
+		}
+		@keyframes rot{
+			from{transform:rotate3d(-1,1,-1,0deg);}
+			to{transform:rotate3d(-1,1,-1,360deg) ;}
+		}
+		@keyframes spintop{
+			from{transform:none;}
+			to{
+				transform:translateY(-100px) rotateX(90deg);
+			}
+		}
+		@keyframes spinbottom{
+			from{transform:none;}
+			to{
+				transform:translateY(100px) rotateX(-90deg) ;
+			}
+		}
+		@keyframes spinleft{
+			from{transform:none;}
+			to{
+				transform:translateX(-100px) rotateY(-90deg);
+			}
+		}
+		@keyframes spinright{
+			from{transform:none;}
+			to{
+				transform:translateX(100px)  rotateY(90deg);
+			}
+		}
+		@keyframes spinback{
+			from{transform:none;}
+			to{
+				transform:translateZ(-100px) rotateY(180deg);
+			}
+		}
+		@keyframes spinfront{
+			from{transform:none;}
+			to{
+				transform:translateZ(100px);
+			}
+		}
+
+
+		.container{
+			box-sizing: border-box;
+			padding:200px;
+			width:800px;
+			background:#cecece;
+			height:800px;
+			margin:100px auto;
+			text-align: center;
+			perspective:1000px;
+			perspective-origin:50% 100px;
+			
+		}
+		.wrap{
+			transform-style: preserve-3d;
+			animation:rot 2s ease 6s infinite;
+		}
+		.box{
+			position:absolute;
+			line-height: 200px;
+			box-sizing: border-box;
+			width:200px;
+			height:200px;
+			border:1px solid #000;
+			font-size:48px;
+			color:white;
+			opacity:0.5;
+			/*backface-visibility: hidden;*/
+			transition:background 2s ease;
+		}
+		.front{
+			animation: spinfront 1s ease 5s both;
+			
+		}
+		.wrap:hover .front{
+			background-color:#E81EBD;
+		}
+
+		.back{
+			animation: spinback 1s ease 4s both;
+			
+		}
+		.wrap:hover .back{
+			background-color: #3642AE;
+		}
+
+		.top{
+			animation :spintop 1s ease both;
+			
+		}
+		.wrap:hover .top{
+			background-color:#F3EC15;
+		}
+
+		.bottom{
+			animation:spinbottom 1s ease 1s both;
+			
+		}
+		.wrap:hover .bottom{
+			background-color: #BAAEAA;
+		}
+
+		.right{
+			animation:spinright 1s ease 3s both;
+			
+		}
+		.wrap:hover .right{
+			background-color: #40ED4A;
+		}
+
+		.left{
+			animation:spinleft 1s ease 2s both;
+			
+		}
+		.wrap:hover .left{
+			background-color: #2CE217;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wrap">
+			<div class="top box">Top</div>
+			<div class="bottom box">Bottom</div>
+			<div class="front box">Front</div>
+			<div class="left box">Left</div>
+			<div class="right box">Right</div>
+			<div class="back box">Back</div>
+		</div>
+	</div>
+</body>
+</html>
